@@ -1,0 +1,86 @@
+# Linux Notes
+
+## What is Linux?
+
+Linux is an **open-source operating system** (like Windows and macOS) based on Unix-like architecture. It is free, highly customizable, and widely used in servers, development environments, and backend systems because it is lightweight, secure, and stable.
+
+Linux has multiple **distributions (distros)** such as Ubuntu, Fedora, and Debian. They use the same Linux kernel but may differ in their tools, package managers, desktop environments, and default configurations.
+
+---
+
+## 📁 Basic Commands
+
+| Command  | Description                                                                             |
+| -------- | --------------------------------------------------------------------------------------- |
+| `pwd`    | Displays the path of the current working directory                                      |
+| `ls`     | Lists files and directories in the current directory                                    |
+| `cd`     | Changes the current directory                                                           |
+| `mkdir`  | Creates a new directory                                                                 |
+| `rmdir`  | Removes an empty directory                                                              |
+| `rm`     | Removes files or directories (`-r` is used for directories)                             |
+| `cp`     | Copies files or directories                                                             |
+| `mv`     | Moves or renames files or directories                                                   |
+| `touch`  | Creates a new empty file or updates a file's timestamp                                  |
+| `find`   | Searches for files and directories based on specified conditions                        |
+| `locate` | Quickly searches for files using a pre-built database (`sudo updatedb` may be required) |
+| `stat`   | Displays detailed information about a file, including size, permissions, and timestamps |
+| `tree`   | Displays the directory structure in a tree-like format                                  |
+
+## 📝 File & Text Processing
+
+| Command         | Description                                                 |
+| --------------- | ----------------------------------------------------------- |
+| `cat`           | Displays or concatenates file contents                      |
+| `tac`           | Displays file contents in reverse line order                |
+| `more` / `less` | Displays file contents page by page                         |
+| `head`          | Displays the first lines of a file (10 lines by default)    |
+| `tail`          | Displays the last lines of a file (10 lines by default)     |
+| `grep`          | Searches for text patterns inside files                     |
+| `sed`           | Searches, replaces, and modifies text using a stream editor |
+| `awk`           | Extracts and processes data, commonly column-wise           |
+| `cut`           | Extracts specific columns or characters from text           |
+| `sort`          | Sorts lines alphabetically or numerically                   |
+| `uniq`          | Removes or counts consecutive duplicate lines               |
+| `diff`          | Compares two files line by line                             |
+| `cmp`           | Compares two files byte by byte                             |
+
+## 🔒 File Permissions & Ownership
+
+| Command | Description                                                                             |
+| ------- | --------------------------------------------------------------------------------------- |
+| `chmod` | Changes read, write, and execute permissions of files or directories                    |
+| `chown` | Changes the owner and/or group of a file or directory                                   |
+| `chgrp` | Changes the group ownership of a file or directory                                      |
+| `umask` | Controls the default permission mask applied when new files and directories are created |
+
+## ⚙️ Process Management
+
+| Command  | Description                                                      |
+| -------- | ---------------------------------------------------------------- |
+| `ps`     | Displays a snapshot of currently running processes               |
+| `top`    | Provides a real-time view of system processes and resource usage |
+| `htop`   | An interactive and user-friendly alternative to `top`            |
+| `kill`   | Terminates a process using its Process ID (PID)                  |
+| `pkill`  | Terminates processes based on their name                         |
+| `nice`   | Starts a process with a specified scheduling priority            |
+| `renice` | Changes the priority of an already running process               |
+| `jobs`   | Lists background and suspended jobs in the current shell session |
+| `bg`     | Resumes a suspended job in the background                        |
+| `fg`     | Brings a background or suspended job to the foreground           |
+
+## 🌐 Networking & System Information
+
+| Command             | Description                                                                                        |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| `ifconfig` / `ip a` | Displays network interface information                                                             |
+| `ping`              | Checks connectivity to a remote host                                                               |
+| `netstat`           | Displays network connections and statistics (deprecated on many modern systems; `ss` is preferred) |
+| `ss`                | Displays active socket and network connections; the modern replacement for `netstat`               |
+| `wget`              | Downloads files from the internet                                                                  |
+| `curl`              | Transfers or fetches data from URLs; commonly used for API testing                                 |
+| `df`                | Displays disk space usage of mounted filesystems                                                   |
+| `du`                | Displays disk space usage of files and directories                                                 |
+| `uptime`            | Shows how long the system has been running                                                         |
+| `uname -a`          | Displays system and kernel information                                                             |
+
+---
