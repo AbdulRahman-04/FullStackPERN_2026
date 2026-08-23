@@ -1,4 +1,5 @@
-// Operators in JavaScript: there are 5 types of operators in js 
+// Common operators in JavaScript: Arithmetic, Assignment, Comparison, Logical,
+//                                 Bitwise, Ternary
 
 
 // 1) Arithmetic operators : used for mathematic calculations such as +  , - , *, / , ** etc
@@ -22,14 +23,14 @@ console.log(x/y);
 // console.log(x!=y);
 
 
-// Logical Operators :  && (true if both condition true) , || (true if any one is true) , ! (gives false condition true and true condition false)
+// Logical Operators :  && (true if both condition true) , || (true if atleast one condition is true) , ! (gives false condition true and true condition false)
 
 console.log(x!=y && x>y);
 console.log(x===y || y<x);
 console.log(!x>y);
 
 
-// Bitwise operators : & , | , !, ^
+// Bitwise operators : & , | , ~, ^, >>, <<
 
 // ternary operator : used for single line conditions.
 let age = 2
