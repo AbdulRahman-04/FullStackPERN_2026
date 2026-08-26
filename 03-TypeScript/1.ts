@@ -172,6 +172,30 @@ let myClg : string = getClg("DCET")
 console.log(myClg);
 
 
+// Optional parameter: A parameter in a function that is not required to be passed when calling the function.
+//  If you don’t provide it, the function can still run using a default or fallback value.
+
+
+// function getName(name ?: string) :void {
+//     console.log(`name: ${name ?? "rahman"}`);
+    
+// }
+
+// getName()
+
+function greet(name ?:string): void{
+  console.log(`name : ${name ?? "Guest"}`);
+  
+}
+
+// greet("john")
+
+function calculatePrice(price: number, discount?:number) : void{
+    console.log(`price : ${price}, discount: ${discount ?? 0}`);
+    
+}
+
+calculatePrice(50000)
 
 // undefined: it literally means a variable is declared but it has been not assigned with any value.
 
@@ -179,6 +203,15 @@ let variable:undefined;
 // console.log(variable, typeof(variable));
 
 let variable2:null
+
+
+// default parameter 
+function greet1(name: string = "suhail"): void{
+    console.log(`heyy ${name}`);
+    
+}
+
+greet1("snehaa")
 
 
 // never: use karte ho jab function kabhi normal tarike se end nahi hoga. 
@@ -338,4 +371,142 @@ let myValues : FinalValue = {
     age : 22
 }
 
-console.log(myValues);
+// console.log(myValues);
+
+
+
+
+// type casting or assertion : Type Assertion means telling TypeScript: "I know the type of this value, so treat it as this type."
+// syntax: const value = someValue as string;
+
+
+function addOrConcat(a:number, b:number, c:"add"|"concat"): number| string{
+    if(c==="add"){
+        return a+b
+    }
+
+    return a+b+"";
+}
+
+let value1 : number = addOrConcat(12,13,"add") as number
+let value2 : string = addOrConcat(11,11, "concat") as string
+// console.log(value1, typeof(value1));
+// console.log(value2, typeof(value2));
+
+
+function getValue(value: string| number): string|number {
+ return value;
+}
+
+let getMyValue : number = getValue(5049) as number
+// console.log(getMyValue, typeof(getMyValue));
+
+function getUserInput(input: string | number): string|number{
+    return input
+}
+
+let getInput:string = getUserInput("rahman") as string
+// console.log(getInput);
+
+
+// readonly means a property can be read,
+//  but its value cannot be changed after it has been assigned.
+
+type IgUser = {
+    readonly id : number,
+    name: string
+}
+
+let myObj : IgUser = {
+    id: 101,
+    name: "fxhadd"
+}
+
+myObj.name = "rxhmann"
+// myObj.id = 102
+
+// console.log(myObj);
+
+
+type myProduct = {
+   
+    readonly id: number,
+    name: string,
+    price: number
+}
+
+let myProduct1: myProduct = {
+    id: 1000,
+    name: "airpods",
+    price: 5000
+}
+
+// myProduct1.id = 1001
+console.log(myProduct1);
+
+
+
+// Generics : generally aap kisi function pe kaam krre then wo dynamic nahi rehta one or two or three type ka data pe kaam krta e.g:
+
+// for number : 
+function getValue2(value: number): number {
+    return value;
+}
+
+// for string :
+function getValue3(value: string): string {
+    return value;
+}
+
+// any use krskte apan for this prblm but type safety chlejati poor
+function anyFunc(a:any):void{
+    console.log(a);
+}
+
+// anyFunc(true)
+// anyFunc("hey")
+// anyFunc(11)
+
+// but generics solve this problem, matlab ek function ku use krke aap koi b type use krskte uspe.
+function myGeneric<T>(a:T):T{
+    console.log(a);
+    return a;
+    
+}
+
+//<T> place holder h us type ka jo apan function call k tym likhre like myGeneric<string>("hi")
+
+// myGeneric<string>("abdul")
+// myGeneric<number>(5049)
+// myGeneric<boolean>(true)
+
+
+function myGenericIs<T>(myVal:T):T{
+ 
+    return myVal
+    
+    
+
+}
+
+let myVal = myGenericIs<string>("heyy")
+console.log(myVal);
+
+// myGeneric<number>(69)
+// myGenericIs<boolean>(true)
+
+
+// Narrowing
+// Narrow karna = possible types ko checks ke through hataate jaana, jab tak TypeScript ko specific type pata chal jaaye.
+
+
+function getVal(value: string | number): string|number{
+    if(typeof value === "string"){
+        return `value is ${value.toUpperCase()}`
+    } else {
+        return `value is ${value.toFixed()}`
+    }
+}
+
+let finalValue : string | number = getVal("yooo")
+console.log(finalValue);
