@@ -1,0 +1,23 @@
+TYPESCRIPT SETUP: 
+
+-> TO INSTALL TS GLOBALLY : npm i -g typescript
+
+-> npm init -y
+-> install ts as dev dependency (coz browser doesnt understand ts it can only understand js, we compile ts into js later).
+-> npm i typescript --save-dev
+-> tsc --init(this initializes the ts config file in our project)
+
+
+->  {
+  "compilerOptions": {
+    "target": "ES6",            -> target means TypeScript ko compile karke kis JavaScript version mein output karna hai.
+    "module": "ES6",            -> konsa module use krre ? common js or esm
+    "outDir": "./dist",         -> jab ts se js compile hojainga apka code poora compiled js code kis dir k andar jainga ? 
+    "rootDir": "./src",         -> apke ts project ka root folder jiske andar poore files nd folders rhinge ts m likhe hue 
+    "strict": true              -> strict mode of ts ? true
+  },
+  "include": ["src/**/*.ts"]    -> ye inclde krleta src k andar poore files nd folders, nested files or folder sabku include krleta.
+}
+
+
+-> npx tsc      -> compile every ts into js in outDir
