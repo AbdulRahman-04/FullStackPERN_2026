@@ -1,163 +1,182 @@
 "use strict";
-// // declaring variables in ts : 
-// var var1 : number = 12
-// console.log(var1);
-// let var2 : string = "hey"
-// console.log(var2);
-// let var3: boolean = true
-// console.log(var3);
-// // Arrays in ts : 
-// let myArr : boolean[] = [true, false, true]
+// declaring variables in ts:
+// var v : string = "hey"
+// console.log(v);
+// let age: number = 22
+// console.log(age);
+// const isAlive: boolean = true
+// console.log(isAlive);
+// Arrays : 
+// let arrIS : boolean[] = [true, false, true]
+// console.log(arrIS);
+// let myArr : string[] = ["abd", "sar", "hi"]
 // console.log(myArr);
-// let myStrArr : string[] = ["hi", "hello"]
-// console.log(myStrArr);
-// let myNumArr : number[] = [1, 1]
-// console.log(myNumArr);
-// tuples : 
-// let myTup1 : [boolean, string, number] = [false, "yoo", 49]
+// let myNums : number[] = [12, 42, 46, 49]
+// console.log(myNums);
+// Tuples : 
+// let myTup : [boolean, string, number] = [true, "hiii", 69]
+// console.log(myTup);
+// let myTup1: [string, number] = ["hi", 48]
 // console.log(myTup1);
-// let myTup2 : [string, number, boolean] = ["L", 69, true]
-// console.log(myTup2);
-// enum : 
+// enums : 
 // enum StatusCode {
-//     SUCESSS = 200,
-//     SERVER_ERR = 500,
+//     SUCCESS = 200,
+//     SERVER_ERROR = 500,
 //     NOT_FOUND = 404
 // }
-// let myStatus : StatusCode = StatusCode.SUCESSS
-// console.log(myStatus);
+// let myVar : StatusCode = StatusCode.SUCCESS
+// console.log(myVar);
 // enum OrderStatusIs {
-//     COOKING = "cooking",
-//     PACKED = "packed",
-//     DELIVERED = "delivered"
+//     PENDING = "pendin",
+//     CONFIRMED = "confirmed",
+//     SHIPPED = "shipped",
+//     DELIVERED = "delivered",
+//     CANCELLED = "cancelled"
 // }
-// let myOrder : OrderStatusIs = OrderStatusIs.COOKING
+// let myOrder : OrderStatusIs = OrderStatusIs.CONFIRMED
 // console.log(myOrder);
-// any : 
-// let anyVar;
-// let anyVar : any = "hi"
-// console.log(anyVar);
-// unknown : 
-// let unVar : unknown;
-// unVar = false
-// if(typeof(unVar) === "boolean"){
-//     console.log(unVar);
+// any :
+// let myvar1;
+// let myvar : any = "hi"
+// myvar = myvar.toUpperCase()
+// console.log(myvar);
+// unknown 
+// let myUnk : unknown
+// myUnk = "hey"
+// if(typeof(myUnk) === "string"){
+//    myUnk = myUnk.toUpperCase()
+//    console.log(myUnk);    
 // }
-// void 
-function sayName(name) {
-    console.log(name);
-}
-// sayName("abdxl")
-function summ(a, b) {
-    return a + b;
-}
-let mySum = summ(20, 20);
-// console.log(mySum);
-// optional parameter : 
-function sayCourse(myCourse) {
-    return myCourse ?? "ECE";
-}
-let getCourse = sayCourse();
-// console.log(getCourse);
-function calculatePricee(price, discount) {
-    return `price is ${price} and discount is ${discount ?? 0}`;
-}
-let getPrice = calculatePricee(55000, 10);
-// console.log(getPrice);
-// undefined : 
-let myVar1 = undefined;
-// console.log(myVar1);
-// default parameter:
-function sayRollNo(rollNo = 5049) {
-    return rollNo;
-}
-let getRollNo = sayRollNo(5046);
-// console.log(getRollNo);
-// never :
-// function neverEnd():never {
-//      throw new Error("error while login")
+// void : 
+// function sayNameIs(name: string) : void{
+//     console.log(name);
 // }
-// neverEnd()
-function infiniteLoop() {
-    while (true) {
-        console.log("HAAN BOL");
+// sayNameIs("rahman")
+// function sumIs (a: number, b:number) : number {
+//     return a+b;
+// }
+// let sums: number = sumIs(2,2)
+// console.log(sums);
+// // optional parameter
+// function myOpt(age ?: number): string {
+//     return `age is ${age ?? 22}`
+// }
+// let myage: string = myOpt(18)
+// console.log(myage);
+// function calci(price : number, discount ?: number): string {
+//     return `price is ${price} and discount is ${discount ?? 0}`
+// }
+// let myFinalPrice: string = calci(12000)
+// console.log(myFinalPrice);
+// undefined 
+// let undef: undefined;
+// console.log(undef);
+// default parameter: 
+// function myParam(a: number = 49): number {
+//     return a
+// }
+// let myNumis : number = myParam(69)
+// console.log(myNumis);
+// never : 
+// function loopis() : never {
+//     while(true){
+//         console.log("yes");
+//     }
+// }
+// loopis()
+// function errIs(): never {
+//     throw new Error("err signing in")
+// }
+// errIs()
+// type inference :
+// let a = "rahman"
+// let g = "fahad"
+// let boolis = true
+// let numis = 48
+// // type annotations : 
+// let xx : boolean = true
+// let xy : string = "female"
+// let zx : number = 5049
+// interface : 
+// interface MyStudentis {
+//     name: string,
+//     age: number,
+//     isAlive: boolean
+// }
+// interface finalStd extends MyStudentis {
+//     course: string,
+//     rollNo: number
+// }
+// let std1 : finalStd = {
+//     name: "rxhman",
+//     age: 22,
+//     isAlive: true,
+//     course: "ece",
+//     rollNo : 49
+// }
+// console.log(std1);
+// type aliases : 
+// type chachas = string | number | boolean
+// let myvar2 : chachas = false
+// console.log(myvar2);
+// type Users = {
+//     name: string,
+//     age: number
+// }
+// let myuser : Users = {
+//     name: "user1",
+//     age: 69
+// }
+// console.log(myuser);
+// type user1 = {
+//     name: string
+// }
+// type user2 = {
+//     age: number
+// }
+// type user3 = user1 & user2 
+// let myObjis: user3 = {
+//     name: "shiii",
+//     age: 29
+// }
+// console.log(myObjis);
+// type casting and assertion : 
+// function addOrConcatis(a:number, b:number, c: "add" | "concat") : string | number {
+//     if(c=== "add"){
+//         return a+b
+//     }
+//     return a+b+""
+// }
+// let myvalue : string = addOrConcatis(1,2, "concat") as string
+// console.log(myvalue);
+// let myvalue : number = addOrConcatis(12,12,"add") as number
+// console.log(myvalue);
+// read only 
+// interface stds {
+//     readonly name: string,
+//     readonly age: number,
+//     readonly isalive: boolean
+// } 
+// let mystd : stds = {
+//     name: "rxhamnnn",
+//     age: 25,
+//     isalive: true
+// }
+// // mystd.age = 26
+// console.log(mystd);
+// generics : 
+// function returnGen<T, U>(a: T, b:U) {
+//  console.log(a , b);
+// }
+// returnGen("hey", 14)
+// returnGen(true, 49)
+function getVall(value) {
+    if (typeof value === "string") {
+        return `value is ${value.toUpperCase()}`;
+    }
+    else {
+        return `value is ${value.toFixed()}`;
     }
 }
-// infiniteLoop()
-// type inference : 
-let myVar2 = "rahman";
-// console.log(myVar2);
-let myVar3 = true;
-// console.log(myVar3);
-let myvar4 = 5049;
-// console.log(myvar4);
-let myVar5 = null;
-let myDetail = {
-    name: "rxhman",
-    age: 22,
-    isalive: true,
-};
-let myDetail1 = {
-    name: "rxhman",
-    age: 22,
-    isalive: true,
-    marks: 88,
-    course: "ece"
-};
-let myvar6 = true;
-let myUserIs = {
-    name: "vk18",
-    age: 37,
-    isalive: true,
-    income: 180000
-};
-// console.log(myUserIs);
-// type casting or assertion : 
-function addOrConcatIs(a, b, c) {
-    if (c === "concat") {
-        return a + b + "";
-    }
-    return a + b;
-}
-let getReturn = addOrConcatIs(10, 10, "add");
-// console.log(getReturn, typeof(getReturn));
-function getMyValueIs(value) {
-    return value;
-}
-let getValues = getMyValueIs("hey");
-let myUserr = {
-    id: 101,
-    name: "adnan"
-};
-myUserr.name = "suhail";
-// myUserr.id = 110
-console.log(myUserr);
-// Generics : generally aap kisi function pe kaam krre then wo dynamic nahi rehta one or two or three type ka data pe kaam krta e.g:
-// function myfunction(data: string | number | boolean) : string | boolean | number{
-//     return data
-// }
-// function myfunction(data: any) : any{
-//     return data
-// }
-// function myfunction<T>(data: T) : T{
-//     return data
-// }
-// let val1 = myfunction("hi")
-// console.log(val1);
-// myfunction(5049)
-// myfunction(true)
-function aeiou(a, b, c) {
-    return { a, b, c };
-}
-let vals = aeiou(12, 3, 4);
-// console.log(vals);
-// Narrowing
-// Narrow karna = possible types ko checks ke through hataate jaana, jab tak TypeScript ko specific type pata chal jaaye.
-function checkVal(value) {
-    if (typeof (value) === "string") {
-        return value.toUpperCase();
-    }
-    return value.toFixed();
-}
-let checkvalue = checkVal("hey");
-console.log(checkvalue);
+let finalValuee = getVall("yooo");
+console.log(finalValuee);
