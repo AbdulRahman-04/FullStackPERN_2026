@@ -1,0 +1,458 @@
+NODE.JS NOTES (this is ai generated notes. i converted my own words knowledge into this and i hope it helps)
+==============================
+
+WHAT IS NODE.JS?
+----------------
+
+Node.js is a JavaScript runtime environment that allows us to
+run JavaScript outside the browser, using Google's V8 JavaScript engine.
+
+Normally:
+
+JavaScript → Browser
+
+With Node.js:
+
+JavaScript → Node.js → Computer / Server
+
+Node.js allows us to build backend / server-side applications
+using JavaScript.
+
+
+PACKAGE.JSON
+----------------
+
+package.json is the configuration / metadata file of a Node.js project.
+
+It contains important information and configuration about the project,
+such as:
+
+- Project name
+- Version
+- Scripts
+- Dependencies
+- DevDependencies
+
+Example:
+
+{
+  "name": "my-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  }
+}
+
+In short:
+
+package.json = project information + configuration + package list.
+
+
+DEPENDENCIES VS DEVDEPENDENCIES
+================================
+
+DEPENDENCIES
+------------
+
+Dependencies are packages required by the application at runtime,
+including when the application is running in production.
+
+Examples:
+
+- express
+- bcrypt
+- jsonwebtoken
+- nodemailer
+- mongoose
+
+Example:
+
+bcrypt
+↓
+password hashing
+↓
+production mein bhi required
+↓
+dependencies
+
+
+DEVDEPENDENCIES
+---------------
+
+DevDependencies are packages needed for development, testing,
+linting, formatting, building, or other development tooling,
+but not by the running production application.
+
+Examples:
+
+- typescript
+- tsx
+- nodemon
+- eslint
+- prettier
+
+Example:
+
+TypeScript
+↓
+TypeScript code → JavaScript
+↓
+development / build process
+↓
+devDependency
+
+Nodemon:
+Development mein files change hone par server automatically restart
+karne ke liye use hota hai, so normally production mein required nahi hota.
+
+
+GOLDEN RULE
+-----------
+
+Production app ko run karne ke liye package chahiye?
+        ↓
+       YES
+        ↓
+   dependencies
+
+Sirf development / testing / tooling / build ke liye chahiye?
+        ↓
+       YES
+        ↓
+ devDependencies
+
+
+Example:
+
+                    DEVELOPMENT    PRODUCTION
+
+bcrypt                  ✅             ✅
+express                 ✅             ✅
+jsonwebtoken            ✅             ✅
+nodemailer              ✅             ✅
+
+typescript               ✅             ❌
+tsx                      ✅             ❌
+nodemon                  ✅             ❌
+eslint                   ✅             ❌
+
+
+TS CONFIG
+==============================
+
+tsconfig.json
+-------------
+
+tsconfig.json is the configuration file of a TypeScript project.
+
+It tells TypeScript how to handle and compile TypeScript code.
+
+
+For a Node.js + TypeScript backend:
+
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "strict": true,
+    "types" :["node"],
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
+
+
+IMPORTANT TS CONFIG OPTIONS
+==============================
+
+1. target
+----------
+
+"target": "ES2022"
+
+Tells TypeScript which JavaScript version to target
+when compiling TypeScript into JavaScript.
+
+TS → JS (ES2022)
+
+
+2. module
+---------
+
+"module": "NodeNext"
+
+Tells TypeScript to follow Node.js's modern module rules.
+
+Node mainly has:
+
+CommonJS → require()
+ESM      → import / export
+
+
+3. moduleResolution
+-------------------
+
+"moduleResolution": "NodeNext"
+
+Tells TypeScript how to find / resolve imported modules.
+
+Example:
+
+import express from "express";
+
+TypeScript needs to find where the "express" package is
+and understand its types.
+
+module
+→ module system ka behavior
+
+moduleResolution
+→ imported modules ko find / resolve karne ka behavior
+
+
+4. rootDir
+----------
+
+"rootDir": "./src"
+
+Tells TypeScript that the source TypeScript files are inside
+the src directory.
+
+Example:
+
+src/
+├── index.ts
+├── routes/
+│   └── user.ts
+└── controllers/
+    └── user.ts
+
+
+5. outDir
+---------
+
+"outDir": "./dist"
+
+Tells TypeScript where to put the compiled JavaScript files.
+
+Example:
+
+src/index.ts
+      ↓
+     tsc
+      ↓
+dist/index.js
+
+
+src/routes/user.ts
+      ↓
+dist/routes/user.js
+
+
+6. strict
+---------
+
+"strict": true
+
+Enables strict TypeScript type checking.
+
+It helps TypeScript catch more type-related errors.
+
+
+7. include
+----------
+
+"include": ["src/**/*.ts"]
+
+Tells TypeScript which TypeScript files should be included
+in the project.
+
+Here it means:
+
+Include .ts files inside src and its subdirectories.
+
+
+8. exclude
+----------
+
+"exclude": ["node_modules", "dist"]
+
+Tells TypeScript which folders/files should be excluded
+from the project input.
+
+node_modules → third-party packages
+dist         → already compiled output
+
+
+9. skipLibCheck
+---------------
+
+"skipLibCheck": true
+
+Skips full type-checking of third-party declaration files
+(.d.ts).
+
+This can make TypeScript checking faster.
+
+
+IMPORTANT PROJECT STRUCTURE
+==============================
+
+05-Node-JS/
+│
+├── src/
+│   ├── index.ts
+│   └── ...
+│
+├── dist/
+│   └── ...
+│
+├── package.json
+├── tsconfig.json
+└── node_modules/
+
+
+IMPORTANT:
+tsconfig.json should be in the project root,
+NOT inside the src folder.
+
+
+TSC COMPILE FLOW
+==============================
+
+When we run:
+
+npx tsc
+
+TypeScript reads tsconfig.json:
+
+        tsconfig.json
+              ↓
+      TypeScript compiler
+              ↓
+       src/**/*.ts
+              ↓
+       type checking
+              ↓
+          TS → JS
+              ↓
+           dist/
+
+
+Example:
+
+src/index.ts
+     ↓
+dist/index.js
+
+
+DEVELOPMENT WITH TSX
+==============================
+
+Install:
+
+npm i -D typescript tsx @types/node
+
+
+typescript
+→ TypeScript compiler / type checking
+
+
+tsx
+→ TypeScript / JavaScript code ko development mein run karta hai.
+
+Example:
+
+npx tsx src/index.ts
+
+Watch mode:
+
+npx tsx watch src/index.ts
+
+watch ka matlab:
+
+index.ts change
+      ↓
+tsx detects change
+      ↓
+program/server re-runs
+
+
+NODemon
+-------
+
+nodemon watches files and restarts the command/process
+when changes are detected.
+
+Example:
+
+nodemon server.js
+
+If server.js changes:
+
+server.js change
+      ↓
+nodemon detects change
+      ↓
+node server.js
+      ↓
+restart
+
+
+IMPORTANT DIFFERENCE:
+
+tsx
+→ TS/JS code ko run karta hai
+→ watch mode mein changes detect karke re-run karta hai
+
+nodemon
+→ files ko watch karta hai
+→ change hone par specified command/process ko restart karta hai
+→ khud TypeScript execute/compile nahi karta
+
+
+@types/node
+===========
+
+@types/node provides TypeScript type definitions for Node.js APIs.
+
+It tells TypeScript about Node.js features such as:
+
+- process
+- process.env
+- Buffer
+- fs
+- path
+- etc.
+
+Example:
+
+console.log(process.env.PORT);
+
+Node.js:
+→ actual runtime provide karta hai
+
+@types/node:
+→ TypeScript ko Node.js ki types samjhata hai
+
+
+So:
+
+npm i -D typescript tsx @types/node
+
+means:
+
+typescript
+→ TS compiler / type checking
+
+tsx
+→ TS/JS code run + watch
+
+@types/node
+→ Node.js APIs ki TypeScript type definitions
+
+// to directly run ts file without compiling into js first : npx tsx src/index.ts
